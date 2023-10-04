@@ -6,14 +6,13 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.List;
 
 public class FastaSequence {
 	private String header;
 	private String sequence;
 
 	public static void main(String[] args) throws Exception {
-		List<FastaSequence> list = FastaSequence.readFastaFile(
+		ArrayList<FastaSequence> list = FastaSequence.readFastaFile(
 				"C:\\Users\\zapat\\git\\binf-advanced-programming\\src\\lab3\\lab3_dna_fasta_practice.txt");
 		for (FastaSequence data : list) {
 			System.out.println(data.getHeader());
@@ -47,8 +46,8 @@ public class FastaSequence {
 		return (float) count / sequence.length();
 	}
 
-	public static List<FastaSequence> readFastaFile(String filepath) throws Exception {
-		List<FastaSequence> list = new ArrayList<>();
+	public static ArrayList<FastaSequence> readFastaFile(String filepath) throws Exception {
+		ArrayList<FastaSequence> list = new ArrayList<>();
 		String header = "";
 		String sequence = "";
 
@@ -72,7 +71,7 @@ public class FastaSequence {
 		return list;
 	}
 
-	public static void writeTableSummary(List<FastaSequence> list, File outputFile) throws Exception{
+	public static void writeTableSummary(ArrayList<FastaSequence> list, File outputFile) throws Exception{
 		BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile));
 		writer.write("sequenceID\tnumA\tnumC\tnumG\tnumT\tsequence");
 		writer.newLine();
