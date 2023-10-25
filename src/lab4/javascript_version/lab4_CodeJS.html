@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Amino Acid Quiz</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+
+      .quiz-container {
+        width: 400px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+
+      .question {
+        font-size: 24px;
+        margin-bottom: 10px;
+      }
+
+      .answer-input {
+        width: 100px;
+        padding: 5px;
+      }
+
+      .score {
+        margin-top: 10px;
+        font-weight: bold;
+      }
+
+      #start-button,
+      #submit-button,
+      #cancel-button {
+        padding: 10px;
+        margin: 10px;
+        font-size: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="quiz-container">
+      <h1>Amino Acid Quiz</h1>
+      <div class="question" id="question">Full name here.</div>
+      <input
+        type="text"
+        class="answer-input"
+        id="answer"
+        placeholder="Short Name"
+      />
+      <br />
+      <button id="start-button">Start Quiz</button>
+      <button id="submit-button">Submit Answer</button>
+      <button id="cancel-button">Cancel</button>
+      <div class="score" id="correct-score">Correct Score: 0</div>
+      <div class="score" id="incorrect-score">Incorrect Score: 0</div>
+      <div class="score" id="time-left">Time Left: 30</div>
+    </div>
+
+    <script>
+      const SHORT_NAMES = [
+        "A",
+        "R",
+        "N",
+        "D",
+        "C",
+        "Q",
+        "E",
+        "G",
+        "H",
+        "I",
+        "L",
+        "K",
+        "M",
+        "F",
+        "P",
+        "S",
+        "T",
+        "W",
+        "Y",
+        "V",
+      ];
+      const FULL_NAMES = [
+        "alanine",
+        "arginine",
+        "asparagine",
+        "aspartic acid",
+        "cysteine",
+        "glutamine",
+        "glutamic acid",
+        "glycine",
+        "histidine",
+        "isoleucine",
+        "leucine",
+        "lysine",
+        "methionine",
+        "phenylalanine",
+        "proline",
+        "serine",
+        "threonine",
+        "tryptophan",
+        "tyrosine",
+        "valine",
+      ];
+      let correctScore = 0;
+      let incorrectScore = 0;
+      let timer;
+      let timeLeft = 30;
+      let quizStarted = false;
+      let randomIndex;
+
+      document.getElementById("start-button").addEventListener("click", () => {
+        if (!quizStarted) {
+          quizStarted = true;
+          correctScore = 0;
+          incorrectScore = 0;
+          randomIndex = Math.floor(Math.random() * FULL_NAMES.length);
+          document.getElementById("start-button").disabled = true;
+          document.getElementById("submit-button").disabled = false;
+          document.getElementById("cancel-button").disabled = false;
+          askQuestion();
+          timer = setInterval(updateTime, 1000);
+        }
+      });
+
+      document.getElementById("submit-button").addEventListener("click", () => {
+        checkAnswer();
+      });
+
+      document.getElementById("cancel-button").addEventListener("click", () => {
+        quitQuiz();
+      });
+
+      function askQuestion() {
+        const randomAA = FULL_NAMES[randomIndex];
+        document.getElementById("question").textContent = randomAA;
+        document.getElementById("answer").value = "";
+      }
+
+      function checkAnswer() {
+        const input = document.getElementById("answer").value.toUpperCase();
+        const correctAnswer = SHORT_NAMES[randomIndex];
+
+        if (input === correctAnswer) {
+          correctScore++;
+        } else {
+          incorrectScore++;
+        }
+        document.getElementById("answer").value = "";
+        document.getElementById(
+          "correct-score"
+        ).textContent = `Correct Score: ${correctScore}`;
+        document.getElementById(
+          "incorrect-score"
+        ).textContent = `Incorrect Score: ${incorrectScore}`;
+        randomIndex = Math.floor(Math.random() * FULL_NAMES.length);
+        askQuestion();
+      }
+
+      function updateTime() {
+        timeLeft--;
+        document.getElementById(
+          "time-left"
+        ).textContent = `Time Left: ${timeLeft}`;
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          quitQuiz();
+        }
+      }
+
+      function quitQuiz() {
+        quizStarted = false;
+        document.getElementById("start-button").disabled = false;
+        document.getElementById("submit-button").disabled = true;
+        document.getElementById("cancel-button").disabled = true;
+        clearInterval(timer);
+        alert(
+          `Quiz Over!\nCorrect Score: ${correctScore}\nIncorrect Score: ${incorrectScore}`
+        );
+        document.getElementById("answer").value = "";
+        document.getElementById("time-left").textContent = "Time Left: 30";
+      }
+    </script>
+  </body>
+</html>
