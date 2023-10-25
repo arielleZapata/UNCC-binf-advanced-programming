@@ -100,24 +100,35 @@ public class lab4_Code {
 
         // Start button logic
         random = new Random();
-        startButton.addActionListener(e -> {
-            if (!quizStarted) { // Check if the quiz has not started
-                quizStarted = true;
-                correctScore = 0;
-                incorrectScore = 0;
-                timer.start();
-                startButton.setEnabled(false);
-                submitButton.setEnabled(true);
-                cancelButton.setEnabled(true);
-                askQuestion();
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (!quizStarted) { // Check if the quiz has not started
+                    quizStarted = true;
+                    correctScore = 0;
+                    incorrectScore = 0;
+                    timer.start();
+                    startButton.setEnabled(false);
+                    submitButton.setEnabled(true);
+                    cancelButton.setEnabled(true);
+                    askQuestion();
+                }
             }
         });
 
-        submitButton.addActionListener(e -> checkAnswer());
+        submitButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkAnswer();
+            }
+        });
 
-        cancelButton.addActionListener(e -> {
-            timer.stop();
-            quitQuiz();
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timer.stop();
+                quitQuiz();
+            }
         });
 
         frame.setVisible(true);
