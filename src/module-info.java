@@ -10,5 +10,4 @@ module binfadvancedprogramming {
     requires javafx.controls;
     opens final_project to javafx.fxml;
     exports final_project;
-
 }
