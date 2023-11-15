@@ -1,51 +1,122 @@
 package lab5;
-
 import javax.swing.*;
 import java.awt.*;
-import javax.swing.border.TitledBorder;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
-public class lab5_Code implements Runnable{
-    public static void main(String[] args) {
-        JFrame frame = new JFrame();
-        frame.setSize(500, 500);
-        frame.setTitle("Factorial Calculator GUI");
-        frame.setLayout(new GridLayout(6, 6));
-        frame.setResizable(false);
-        frame.setLocationRelativeTo(null);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+public class lab5_Code extends JFrame {
+    private JLabel inputLabel;
+    private JTextArea inputArea;
+    private JButton startButton;
+    private JButton cancelButton;
+    private JTextArea resultsArea;
+    private JLabel progressLabel;
 
-        // display the formula
-        JPanel formulaPanel = new JPanel(new FlowLayout());
-        formulaPanel.setBorder(new TitledBorder("Factorial Formula"));
-        JLabel formula = new JLabel("n! = ?");
-        formulaPanel.add(formula);
-        frame.add(formulaPanel);
+    private boolean calculationRunning;
+    private boolean calculationCancelled;
 
-        // user input area
-        JPanel inputPanel = new JPanel(new FlowLayout());
-        inputPanel.setBorder(new TitledBorder("Input a Number"));
-        JTextField numberField = new JTextField(10);
-        JButton startButton = new JButton("Calculate");
-        inputPanel.add(new JLabel("n = "));
-        inputPanel.add(numberField);
-        inputPanel.add(startButton);
-        frame.add(inputPanel, BorderLayout.NORTH);
+    public lab5_Code() {
+        setTitle("DNA Calculator");
+        setLayout(new BorderLayout());
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        // result display
-        JPanel resultPanel = new JPanel(new BorderLayout());
-        resultPanel.setBorder(new TitledBorder("Results"));
-        JTextArea resultArea = new JTextArea();
-        resultArea.setEditable(false);
-        resultPanel.add(new JScrollPane(resultArea), BorderLayout.CENTER);
-        frame.add(resultPanel, BorderLayout.CENTER);
+        JPanel inputPanel = new JPanel(new BorderLayout());
+        inputLabel = new JLabel("Enter DNA Sequence:");
+        inputArea = new JTextArea(10, 40);
+        inputPanel.add(inputLabel, BorderLayout.NORTH);
+        inputPanel.add(new JScrollPane(inputArea), BorderLayout.CENTER);
 
+        JPanel buttonPanel = new JPanel();
+        startButton = new JButton("Start");
+        cancelButton = new JButton("Cancel");
+        cancelButton.setEnabled(false);
 
-        frame.setVisible(true);
+        startButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                startCalculation();
+            }
+        });
+
+        cancelButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cancelCalculation();
+            }
+        });
+
+        buttonPanel.add(startButton);
+        buttonPanel.add(cancelButton);
+
+        JPanel resultsPanel = new JPanel(new BorderLayout());
+        progressLabel = new JLabel("Progress:");
+        resultsArea = new JTextArea(10, 40);
+        resultsPanel.add(progressLabel, BorderLayout.NORTH);
+        resultsPanel.add(new JScrollPane(resultsArea), BorderLayout.CENTER);
+
+        add(inputPanel, BorderLayout.NORTH);
+        add(buttonPanel, BorderLayout.CENTER);
+        add(resultsPanel, BorderLayout.SOUTH);
+
+        pack();
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
-    public void run() {
 
+    private void startCalculation() {
+        // Disable start button, enable cancel button
+        startButton.setEnabled(false);
+        cancelButton.setEnabled(true);
+        calculationRunning = true;
+        calculationCancelled = false;
+
+        // Perform calculation in a separate thread
+        Thread calculationThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                // Get input DNA sequence
+                String dnaSequence = inputArea.getText();
+
+                // Perform slow calculation (e.g., find GC content)
+                int gcsFound = 0; // Replace this with actual calculation
+
+                // Update results every few seconds
+                while (calculationRunning && !calculationCancelled) {
+                    resultsArea.setText("GCs found so far: " + gcsFound);
+                    try {
+                        Thread.sleep(3000); // Update every 3 seconds
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                // Display final results or cancellation message
+                if (calculationCancelled) {
+                    resultsArea.setText("Calculation cancelled.");
+                } else {
+                    resultsArea.setText("Final GCs found: " + gcsFound);
+                }
+
+                // Enable start button, disable cancel button
+                startButton.setEnabled(true);
+                cancelButton.setEnabled(false);
+                calculationRunning = false;
+            }
+        });
+
+        calculationThread.start();
+    }
+
+    private void cancelCalculation() {
+        calculationCancelled = true;
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new lab5_Code();
+            }
+        });
     }
 }
