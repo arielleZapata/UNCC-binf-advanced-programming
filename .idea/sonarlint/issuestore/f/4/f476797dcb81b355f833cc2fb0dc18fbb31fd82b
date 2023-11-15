@@ -1,0 +1,33 @@
+
+7
+java:S1643"Use a StringBuilder instead.(™œ´şÿÿÿÿ
+7
+java:S1643"Use a StringBuilder instead.(§ÚĞıÿÿÿÿ
+2
+java:S1643"Use a StringBuilder instead.(Îæ˜Ù
+7
+java:S1643"Use a StringBuilder instead.(€ßú ıÿÿÿÿ
+7
+java:S1643:"Use a StringBuilder instead.(´Ö†ÿûÿÿÿÿ
+7
+java:S1643<"Use a StringBuilder instead.(ÜŒàÆûÿÿÿÿ
+7
+java:S1643>"Use a StringBuilder instead.(ıâ×³úÿÿÿÿ
+7
+java:S1643@"Use a StringBuilder instead.(Ğ“Ó–ıÿÿÿÿ
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 28 to the 15 allowed.(Çµí‘
+@	java:S106""+Replace this use of System.out by a logger.(Ï»³Ì
+E	java:S106%"+Replace this use of System.out by a logger.(³ğ¸ûÿÿÿÿ
+@	java:S106)"+Replace this use of System.out by a logger.(ãİ«
+E	java:S106I"+Replace this use of System.out by a logger.(¤ªÆ²úÿÿÿÿ
+E	java:S106L"+Replace this use of System.out by a logger.(ÓÀˆíúÿÿÿÿ
+@	java:S106M"+Replace this use of System.out by a logger.(Š†ñ®
+E	java:S106N"+Replace this use of System.out by a logger.(Ê–şûşÿÿÿÿ
+E	java:S106O"+Replace this use of System.out by a logger.(³ğ¸ûÿÿÿÿ
+E	java:S106P"+Replace this use of System.out by a logger.(ª¼÷°ûÿÿÿÿ
+@	java:S106Q"+Replace this use of System.out by a logger.(É¢Á¹
+E	java:S106R"+Replace this use of System.out by a logger.(ÓÀˆíúÿÿÿÿ
+E	java:S106S"+Replace this use of System.out by a logger.(Ğ¤õıÿÿÿÿ
+Ü
+java:S6541"ÅA "Brain Method" was detected. Refactor it to reduce at least one of the following metrics: LOC from 76 to 64, Complexity from 23 to 14, Nesting Level from 3 to 2, Number of Variables from 20 to 6.(Çµí‘
