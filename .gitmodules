@@ -1,0 +1,6 @@
+[submodule "src/final_project/ABP-Final-Project"]
+	path = src/final_project/ABP-Final-Project
+	url = https://github.com/arielleZapata/ABP-Final-Project.git
+[submodule "src/final_project/ExtinctionAnalyzer_Old"]
+	path = src/final_project/ExtinctionAnalyzer_Old
+	url = https://github.com/arielleZapata/ExtinctionAnalyzer_Old.git
