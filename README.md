@@ -30,7 +30,7 @@ src/
 ├── lab1/
 │   └── Lab1_Code.java                   # Lab 1: Random DNA sequence generation and analysis
 ├── lab2/
-│   └── Lab2_Code.java                   # Lab 2: Placeholder (extend as needed)
+│   └── Lab2_Code.java                   # Lab 2: Amino acid short name quiz with timed practice and scoring
 ├── lab3/
 │   ├── FastaSequence.java               # Lab 3: FASTA file parsing and GC ratio calculation
 │   └── lab3_dna_fasta_practice.txt      # Lab 3: Example input data (FASTA format)
@@ -61,6 +61,7 @@ src/
 ## Features
 
 - **Lab 1**: Generates random DNA sequences and analyzes repeating 3-mer sequences like "AAA" and "CCC".
+- **Lab 2**: Amino acid quiz with customizable practice lengths, tracking correct and incorrect answers.
 - **Lab 3**: Reads a FASTA file, calculates the GC ratio, and outputs the results in a tabular format.
 - **Lab 4**: Provides an interactive quiz on amino acids, available in both Java Swing and JavaScript versions.
 - **Lab 5**: Multi-threaded GC content calculator with real-time progress updates.
