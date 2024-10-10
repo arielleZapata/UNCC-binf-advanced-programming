@@ -1,0 +1,4 @@
+csv.file="~/ABP-final/sampleCSV.csv"
+tree.file="~/ABP-final/sampleTree.tre"
+graphX=value1 
+graphY=value2

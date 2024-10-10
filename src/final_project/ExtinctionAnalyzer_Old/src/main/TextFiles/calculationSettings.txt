@@ -1,0 +1,4 @@
+csv.file="C:\Users\zapat\Documents\ABP-final\sampleCSV.csv"
+tree.file="C:\Users\zapat\Documents\ABP-final\sampleTree.tre"
+graphY=PCA2
+graphX=PCA1

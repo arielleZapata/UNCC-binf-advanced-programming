@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.finalprojectextinctionanalyzer.Scene3Controller">
+    <children>
+        <Label layoutX="140.0" layoutY="14.0" text="Extinction Simulation">
+            <font>
+                <Font name="Cambria" size="38.0" />
+            </font>
+        </Label>
+        <Label layoutX="16.0" layoutY="70.0" prefHeight="35.0" prefWidth="200.0" text="Selected taxa that will go extinct (min 4 species):" textAlignment="CENTER" wrapText="true">
+            <font>
+                <Font name="Cambria" size="12.0" />
+            </font>
+        </Label>
+        <Button layoutX="185.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchToScene1" text="Back to Start">
+            <font>
+                <Font name="Cambria" size="12.0" />
+            </font></Button>
+        <Button layoutX="277.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchToScene2" text="Data Selection">
+            <font>
+                <Font name="Cambria" size="12.0" />
+            </font></Button>
+        <Button layoutX="499.0" layoutY="367.0" mnemonicParsing="false" onAction="#switchToScene4" text="Go to Report">
+            <font>
+                <Font name="Cambria" size="12.0" />
+            </font></Button>
+      <ListView fx:id="listOfSpeciesAlive" layoutX="14.0" layoutY="107.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button fx:id="makeGoExtinct" layoutX="88.0" layoutY="319.0" mnemonicParsing="false" onAction="#saveExtinctSpeciesToFile" text="Extinction">
+         <font>
+            <Font name="Cambria" size="12.0" />
+         </font>
+      </Button>
+        <ImageView fx:id="phylomorphospaceIMG" fitHeight="286.0" fitWidth="381.0" layoutX="238.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@../../../RScriptOutputs/phylomorphospace.jpg" />
+            </image>
+        </ImageView>
+    </children>
+</AnchorPane>

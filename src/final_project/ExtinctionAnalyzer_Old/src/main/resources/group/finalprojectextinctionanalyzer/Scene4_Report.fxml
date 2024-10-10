@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="group.finalprojectextinctionanalyzer.Scene4Controller">
+   <children>
+      <Button fx:id="exportResults" layoutX="126.0" layoutY="145.0" mnemonicParsing="false" onAction="#initialize" prefHeight="110.0" prefWidth="330.0" text="Export PDF">
+         <font>
+            <Font name="Cambria" size="24.0" />
+         </font></Button>
+      <Label layoutX="224.0" layoutY="24.0" text="Report">
+         <font>
+            <Font name="Cambria" size="38.0" />
+         </font>
+      </Label>
+      <Button layoutX="249.0" layoutY="353.0" mnemonicParsing="false" onAction="#switchToScene1" text="Back to Start" />
+   </children>
+</AnchorPane>
